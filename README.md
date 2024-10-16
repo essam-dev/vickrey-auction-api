@@ -1,12 +1,6 @@
 Kerdres Agency - Coding Kata - Vickrey Auction
 
-**1. Objective of this Google Form**
-
-This form is designed to:
-- Present coding kata #1 to interested candidates.
-- Gather the completed code for subsequent review by Hugo.
-
-**2. Premise**
+# Expected result
 
 Consider a scenario involving a sealed-bid second-price auction, with the following conditions:
 
@@ -16,7 +10,7 @@ Consider a scenario involving a sealed-bid second-price auction, with the follow
 - Only one bidder can win the auction.
 - The winning price is the highest bid placed by any non-winning bidder that is above the reserve price. If there's no such bid, the reserve price itself is the winning price.
 
-**3. Instructions**
+## **Instructions**
 
 Your task is to create a program that models the scenario described above. Here are some guidelines to follow:
 
@@ -26,7 +20,7 @@ Your task is to create a program that models the scenario described above. Here 
 - You are free to use any data structures that best represent the inputs and outputs.
 - You can select any programming language for this task.
 
-**4. Example**
+### **Example**
 
 Let's consider 5 potential buyers (A, B, C, D, E) who compete to acquire an object with a reserve price set at 100 euros, bidding as follows:
 
@@ -38,9 +32,56 @@ Let's consider 5 potential buyers (A, B, C, D, E) who compete to acquire an obje
 
 The buyer E wins the auction at the price of 130 euros.
 
-**Important:**
+# Test case
 
-What are we assessing with this Kata to be carried out in the language of your choice:
-- The outcome; does it work and provide the expected results.
-- The deliverable (source, "file", user manual, etc.)
-- The code: its structuration/organization, quality (adherence to coding principles and standards), readability, potential optimization, etc.
+After starting the program locally, you can access to the swagger documentation to test the API.
+The documentation is available at the following URL: http://localhost:8080/swagger-ui/index.html
+
+
+The following curl command can be used to test the API:
+```
+curl --location 'http://localhost:8080/v1/auctions/vickrey' \
+--header 'Content-Type: application/json' \
+--data '{
+    "bidders": [
+        {
+            "userName": "A",
+            "bids": [
+                110,
+                130
+            ]
+        },
+        {
+            "userName": "B",
+            "bids": []
+        },
+        {
+            "userName": "C",
+            "bids": [
+                125
+            ]
+        },
+        {
+            "userName": "D",
+            "bids": [
+                105,
+                115,
+                90
+            ]
+        },
+        {
+            "userName": "E",
+            "bids": [
+                132,
+                135,
+                140
+            ]
+        }
+    ],
+    "reservePrice": 100
+}'
+```
+
+
+
+
